@@ -676,10 +676,10 @@ exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
 
 " Showmark and better SignColumn
 hi! link SignColumn     LineNr
-hi! link ShowmarkHLl    DiffAdd
-hi! link ShowmarkHLu    DiffChange
-hi! link ShowmarkHLo    DiffAdd
-hi! link ShowmarkHLm    DiffChange
+hi! link ShowMarkHLl    DiffAdd
+hi! link ShowMarkHLu    DiffChange
+hi! link ShowMarkHLo    DiffAdd
+hi! link ShowMarkHLm    DiffChange
 
 " Syntastic sign group
 exe "hi! SyntasticErrorSign"    .s:fmt_bold     .s:fg_red     .s:bg_base02
