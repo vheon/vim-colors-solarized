@@ -222,6 +222,8 @@ call s:SetOption("diffmode","normal")
 call s:SetOption("hitrail",0)
 call s:SetOption("menu",1)
 
+call s:SetOption("gutter", 0)
+
 "}}}
 " Colorscheme initialization "{{{
 " ---------------------------------------------------------------------
@@ -589,7 +591,7 @@ exe "hi! Underlined"     .s:fmt_none   .s:fg_violet .s:bg_none
 exe "hi! Ignore"         .s:fmt_none   .s:fg_none   .s:bg_none
 "       *Ignore          left blank, hidden  |hl-Ignore|
 
-exe "hi! Error"          .s:fmt_bold   .s:fg_red    .s:bg_none
+exe "hi! Error"          .s:fmt_revr   .s:fg_red    .s:bg_none
 "       *Error           any erroneous construct
 
 exe "hi! Todo"           .s:fmt_bold   .s:fg_magenta.s:bg_none
@@ -618,7 +620,11 @@ exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
 exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base03
+if (g:solarized_gutter == 0)
+  exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base03
+else
+  exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
+endif
 exe "hi! CursorLineNr"   .s:fmt_none   .s:fg_base01 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 if ( has("gui_running") || &t_Co > 8 )
@@ -632,7 +638,12 @@ exe "hi! VisualNOS"      .s:fmt_stnd   .s:fg_none   .s:bg_base02 .s:fmt_revbb
 exe "hi! WarningMsg"     .s:fmt_bold   .s:fg_red    .s:bg_none
 exe "hi! WildMenu"       .s:fmt_none   .s:fg_base2  .s:bg_base02 .s:fmt_revbb
 exe "hi! Folded"         .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:sp_base03
-exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base0  .s:bg_base02
+if (g:solarized_gutter == 0)
+  exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base0  .s:bg_base03
+else
+  exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base0  .s:bg_base02
+endif
+
 if      (g:solarized_diffmode=="high")
 exe "hi! DiffAdd"        .s:fmt_revr   .s:fg_green  .s:bg_none
 exe "hi! DiffChange"     .s:fmt_revr   .s:fg_yellow .s:bg_none
@@ -644,27 +655,20 @@ exe "hi! DiffChange"     .s:fmt_undr   .s:fg_yellow .s:bg_none   .s:sp_yellow
 exe "hi! DiffDelete"     .s:fmt_bold   .s:fg_red    .s:bg_none
 exe "hi! DiffText"       .s:fmt_undr   .s:fg_blue   .s:bg_none   .s:sp_blue
 else " normal
-    if has("gui_running")
-exe "hi! DiffAdd"        .s:fmt_bold   .s:fg_green  .s:bg_base02 .s:sp_green
-exe "hi! DiffChange"     .s:fmt_bold   .s:fg_yellow .s:bg_base02 .s:sp_yellow
-exe "hi! DiffDelete"     .s:fmt_bold   .s:fg_red    .s:bg_base02
-exe "hi! DiffText"       .s:fmt_bold   .s:fg_blue   .s:bg_base02 .s:sp_blue
-    else
-exe "hi! DiffAdd"        .s:fmt_none   .s:fg_green  .s:bg_base02 .s:sp_green
-exe "hi! DiffChange"     .s:fmt_none   .s:fg_yellow .s:bg_base02 .s:sp_yellow
-exe "hi! DiffDelete"     .s:fmt_none   .s:fg_red    .s:bg_base02
-exe "hi! DiffText"       .s:fmt_none   .s:fg_blue   .s:bg_base02 .s:sp_blue
-    endif
+exe "hi! DiffAdd"        .s:fmt_none   .s:fg_green  .s:bg_none .s:sp_green
+exe "hi! DiffChange"     .s:fmt_none   .s:fg_yellow .s:bg_none .s:sp_yellow
+exe "hi! DiffDelete"     .s:fmt_none   .s:fg_red    .s:bg_none
+exe "hi! DiffText"       .s:fmt_none   .s:fg_blue   .s:bg_none .s:sp_blue
 endif
 exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! SpellBad"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_red
 exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
 exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
 exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_yellow
-exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:fmt_revbb
-exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base01 .s:bg_base2   .s:fmt_revbb
-exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base2  .s:bg_base0   .s:fmt_revbb
-exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03  .s:fmt_revbb
+exe "hi! Pmenu"          .s:fmt_none   .s:fg_base01 .s:bg_base3   .s:fmt_revbb
+exe "hi! PmenuSel"       .s:fmt_none   .s:fg_orange .s:bg_base2   .s:fmt_revbb
+exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base02 .s:bg_base0   .s:fmt_revbb
+exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base00 .s:bg_base00  .s:fmt_revbb
 exe "hi! TabLine"        .s:fmt_none   .s:fg_base2  .s:bg_base01  .s:sp_base0
 exe "hi! TabLineFill"    .s:fmt_none   .s:fg_base0  .s:bg_base01  .s:sp_base0
 exe "hi! TabLineSel"     .s:fmt_none   .s:fg_base2  .s:bg_orange  .s:sp_base0
@@ -676,15 +680,28 @@ hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_base03    .s:bg_red
 
 " Showmark and better SignColumn
-hi! link SignColumn     LineNr
+if (g:solarized_gutter == 0)
+  exe "hi! SignColumn"     .s:fmt_none   .s:fg_base01 .s:bg_base03
+else
+  exe "hi! SignColumn"     .s:fmt_none   .s:fg_base01 .s:bg_base02
+endif
 hi! link ShowMarksHLl    DiffAdd
 hi! link ShowMarksHLu    DiffChange
 hi! link ShowMarksHLo    DiffAdd
 hi! link ShowMarksHLm    DiffChange
 
 " Syntastic sign group
-exe "hi! SyntasticErrorSign"    .s:fmt_bold     .s:fg_red     .s:bg_base02
-exe "hi! SyntasticWarningSign"  .s:fmt_bold     .s:fg_magenta .s:bg_base02
+if (g:solarized_gutter == 0)
+  exe "hi! SyntasticErrorSign"         .s:fmt_none  .s:fg_red     .s:bg_base03
+  exe "hi! SyntasticWarningSign"       .s:fmt_bold  .s:fg_yellow  .s:bg_base03
+  exe "hi! SyntasticStyleErrorSign"    .s:fmt_bold  .s:fg_yellow  .s:bg_base03
+  exe "hi! SyntasticStyleWarningSign"  .s:fmt_bold  .s:fg_green   .s:bg_base03
+else
+  exe "hi! SyntasticErrorSign"         .s:fmt_none  .s:fg_red     .s:bg_base02
+  exe "hi! SyntasticWarningSign"       .s:fmt_bold  .s:fg_yellow  .s:bg_base02
+  exe "hi! SyntasticStyleErrorSign"    .s:fmt_bold  .s:fg_violet  .s:bg_base02
+  exe "hi! SyntasticStyleWarningSign"  .s:fmt_bold  .s:fg_green   .s:bg_base02
+endif
 
 "}}}
 " vim syntax highlighting "{{{
