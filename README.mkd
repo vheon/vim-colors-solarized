@@ -1,3 +1,10 @@
+This is a personal fork
+=======================
+
+This is a personal fork. Since the original repo is not being updated in 3 years
+I decided to clean up some code that I don't use (like the menu) and slim down
+the repo itself (like the pictures)
+
 ---
 Title: Solarized Colorscheme for Vim
 Description: Precision colors for machines and people

@@ -16,10 +16,9 @@ See the homepage at http://ethanschoonover.com/solarized for screenshots and
 details.
 
 0. Install				|solarized-install|
-1. Solarized Menu			|solarized-menu|
-2. Options				|solarized-options|
-3. Toggle Background			|solarized-togglebg|
-4. Terminal Issues			|solarized-term|
+1. Options				|solarized-options|
+2. Toggle Background			|solarized-togglebg|
+3. Terminal Issues			|solarized-term|
 
 ==============================================================================
 0. Install						*solarized-install*
@@ -58,51 +57,11 @@ or, for the light background mode of Solarized:
 	colorscheme solarized
 
 ==============================================================================
-1. Solarized Menu					*solarized-menu*
-
-Solarized makes available a menu when used in Vim GUI mode (gvim, macvim).  
-This menu includes many of the options detailed below so that you can test out 
-different values quickly without modifying your .vimrc file. If you wish to 
-turn off this menu permanently, simply place the following line in your .vimrc 
-above the "colorscheme solarized" line.
-
-	let g:solarized_menu=0
-
-==============================================================================
 2. Toggle Background					*solarized-togglebg*
 							*toggle-bg* *togglebg*
 							*toggle-background*
 
-Solarized comes with Toggle Background, a simple plugin to switch between 
-light and dark background modes and reset the colorscheme. This is most useful 
-for colorschemes that support both light and dark modes and in terminals or 
-gui vim windows where the background will be properly set.
-
-Toggle Background can be accessed by:
-
-    * the Solarized menu (in Vim gui mode)
-    * the Window menu (in Vim gui mode, even if the Solarized menu is off)
-    * the "yin/yang" toolbar button (in Vim gui mode)
-    * the default mapping of <F5>
-    * custom key mapping you set in your .vimrc (see below)
-    * command line via ":ToggleBG" (no quotes)
-
-Toggle Background starts with a default mapping to function key <F5>. If you 
-are already using this in a mapping, Toggle Background will not map itself to 
-a default and you will have to map it manually in your .vimrc file, or 
-remove/change your existing <F5> mapping to another value. To customize the 
-keyboard mapping in your .vimrc file, use the following line, changing the 
-"<F5>" value to the key or key combination you wish to use:
-
-	call togglebg#map("<F5>")
-
-Note that you'll want to use a single function key or equivalent if you want 
-the plugin to work in all modes (normal, insert, visual).
-
-When using the plugin during normal, visual, or insert mode, there should be 
-no interruption in workflow. However, if you activate the plugin during 
-REPLACE mode, you will switch to standard insert mode (you will leave the 
-overwrite replace mode).
+Just set the 'background' property to 'light' or 'dark'
 
 ==============================================================================
 3. Solarized Terminal Issues				*solarized-term*
@@ -132,17 +91,6 @@ either manually or via one of the many terminal schemes available for import.
 4. Solarized Options					*solarized-options*
 
 
-AUTOGENERATE OPTIONS
-
-You can easily modify and experiment with Solarized display options using the 
-Solarized menu when using Vim in gui mode. Once you have things set to your 
-liking, you can autogenerate the current option list in a format ready for 
-insertion into your .vimrc file using the Solarized menu "Autogenerate 
-Options" command or at the command line with:
-
-    :SolarizedOptions
-
-
 OPTION LIST
 
 Set these in your vimrc file prior to calling the colorscheme.
@@ -158,7 +106,6 @@ g:solarized_italic    =   1       |   0
 g:solarized_contrast  =   "normal"|   "high" or "low"
 g:solarized_visibility=   "normal"|   "high" or "low"
 g:solarized_hitrail   =   0       |   1
-g:solarized_menu      =   1       |   0
 ------------------------------------------------
 
 
@@ -239,16 +186,6 @@ important one) while in the cursoline in a different manner in order to make
 them more visible. This may not work consistently as Solarized is using 
 a pattern match than can be overridden by a more encompassing syntax-native 
 match such as a comment line.
-
-
-------------------------------------------------
-g:solarized_menu       =  1       |   0			*'solarized_menu'*
-------------------------------------------------
-Solarized includes a menu providing access to several of the above
-display related options, including contrast and visibility. This allows
-for an easy method of testing different values quickly before settling
-on a final assignment for your .vimrc. If you wish to turn off this menu,
-assign g:solarized_menu a value of 0.
 
 
  vim:tw=78:noet:ts=8:ft=help:norl:
