@@ -616,10 +616,10 @@ exe "hi! DiffDelete"     .s:fmt_none   .s:fg_red    .s:bg_none
 exe "hi! DiffText"       .s:fmt_none   .s:fg_blue   .s:bg_none .s:sp_blue
 endif
 exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! SpellBad"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_red
-exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
-exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
-exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_yellow
+exe "hi! SpellBad"       .s:fmt_curl   .s:fg_red    .s:bg_none    .s:sp_red
+exe "hi! SpellCap"       .s:fmt_curl   .s:fg_violet .s:bg_none    .s:sp_violet
+exe "hi! SpellRare"      .s:fmt_curl   .s:fg_cyan   .s:bg_none    .s:sp_cyan
+exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_yellow .s:bg_none    .s:sp_yellow
 exe "hi! Pmenu"          .s:fmt_none   .s:fg_base01 .s:bg_base3   .s:fmt_revbb
 exe "hi! PmenuSel"       .s:fmt_none   .s:fg_orange .s:bg_base2   .s:fmt_revbb
 exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base02 .s:bg_base0   .s:fmt_revbb
