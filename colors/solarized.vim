@@ -954,6 +954,14 @@ exe "hi! pandocMetadata"                 .s:fg_blue   .s:bg_none   .s:fmt_bold
 hi! link pandocMetadataTitle             pandocMetadata
 
 "}}}
+
+exe "hi! SimpleMarkWord1" .s:fg_cyan     .s:bg_none .s:fmt_revr
+exe "hi! SimpleMarkWord2" .s:fg_blue     .s:bg_none .s:fmt_revr
+exe "hi! SimpleMarkWord3" .s:fg_green    .s:bg_none .s:fmt_revr
+exe "hi! SimpleMarkWord4" .s:fg_magenta  .s:bg_none .s:fmt_revr
+exe "hi! SimpleMarkWord5" .s:fg_yellow   .s:bg_none .s:fmt_revr
+exe "hi! SimpleMarkWord6" .s:fg_orange   .s:bg_none .s:fmt_revr
+
 " Utility autocommand "{{{
 " ---------------------------------------------------------------------
 " In cases where Solarized is initialized inside a terminal vim session and
